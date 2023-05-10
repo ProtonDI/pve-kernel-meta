@@ -1,4 +1,10 @@
-pve-kernel-6.2 (7.4-2) UNRELEASED; urgency=medium
+pve-kernel-6.2 (7.4-3) bullseye; urgency=medium
+
+  * ABI bump for 6.2.11-2-pve
+
+ -- Proxmox Support Team <support@proxmox.com>  Wed, 10 May 2023 13:57:25 +0200
+
+pve-kernel-6.2 (7.4-2) bullseye; urgency=medium
 
   * ABI bump for 6.2.11-1-pve
 
