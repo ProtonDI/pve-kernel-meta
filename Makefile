@@ -5,8 +5,8 @@ export KERNEL_ABI=6.2.11-2-pve
 
 GITVERSION:=$(shell git rev-parse HEAD)
 
-KERNEL_DEB=pve-kernel-$(KERNEL_VER)_$(DEB_VERSION_UPSTREAM_REVISION)_all.deb
-HEADERS_DEB=pve-headers-$(KERNEL_VER)_$(DEB_VERSION_UPSTREAM_REVISION)_all.deb
+KERNEL_DEB=pve-kernel-$(KERNEL_VER)_$(DEB_VERSION)_all.deb
+HEADERS_DEB=pve-headers-$(KERNEL_VER)_$(DEB_VERSION)_all.deb
 
 BUILD_DIR=build
 
