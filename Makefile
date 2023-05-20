@@ -9,11 +9,13 @@ KERNEL_DEB=pve-kernel-$(KERNEL_VER)_$(DEB_VERSION)_all.deb
 HEADERS_DEB=pve-headers-$(KERNEL_VER)_$(DEB_VERSION)_all.deb
 
 BUILD_DIR=pve-kernel-$(KERNEL_VER)_$(DEB_VERSION)
+DSC=pve-kernel-$(KERNEL_VER)_$(DEB_VERSION).dsc
 
 DEBS=$(KERNEL_DEB) $(HEADERS_DEB)
 
-.PHONY: deb
+.PHONY: deb dsc
 deb: $(DEBS)
+dsc: $(DSC)
 
 $(BUILD_DIR): debian
 	rm -rf $@ $@.tmp
@@ -27,6 +29,10 @@ $(HEADERS_DEB): $(KERNEL_DEB)
 $(KERNEL_DEB): $(BUILD_DIR)
 	cd $(BUILD_DIR); dpkg-buildpackage -b -uc -us
 	lintian $(DEBS)
+
+$(DSC): $(BUILD_DIR)
+	cd $(BUILD_DIR); dpkg-buildpackage -S -uc -us
+	lintian $(DSC)
 
 .PHONY: upload
 upload: UPLOAD_DIST ?= $(DEB_DISTRIBUTION)
