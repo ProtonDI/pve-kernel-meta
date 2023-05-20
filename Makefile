@@ -34,6 +34,9 @@ $(DSC): $(BUILD_DIR)
 	cd $(BUILD_DIR); dpkg-buildpackage -S -uc -us
 	lintian $(DSC)
 
+sbuild: $(DSC)
+	sbuild $(DSC)
+
 .PHONY: upload
 upload: UPLOAD_DIST ?= $(DEB_DISTRIBUTION)
 upload: $(DEBS)
