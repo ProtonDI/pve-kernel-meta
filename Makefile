@@ -8,20 +8,23 @@ GITVERSION:=$(shell git rev-parse HEAD)
 KERNEL_DEB=pve-kernel-$(KERNEL_VER)_$(DEB_VERSION)_all.deb
 HEADERS_DEB=pve-headers-$(KERNEL_VER)_$(DEB_VERSION)_all.deb
 
-BUILD_DIR=build
+BUILD_DIR=pve-kernel-$(KERNEL_VER)_$(DEB_VERSION)
 
 DEBS=$(KERNEL_DEB) $(HEADERS_DEB)
 
 .PHONY: deb
 deb: $(DEBS)
 
+$(BUILD_DIR): debian
+	rm -rf $@ $@.tmp
+	mkdir $@.tmp
+	cp -a debian $@.tmp/
+	cd $@.tmp; debian/rules debian/control
+	echo "git clone git://git.proxmox.com/git/pve-kernel-meta.git\\ngit checkout $(GITVERSION)" > $@.tmp/debian/SOURCE
+	mv $@.tmp $@
+
 $(HEADERS_DEB): $(KERNEL_DEB)
-$(KERNEL_DEB): debian
-	rm -rf $(BUILD_DIR)
-	mkdir -p $(BUILD_DIR)/debian
-	rsync -a * $(BUILD_DIR)/
-	cd $(BUILD_DIR); debian/rules debian/control
-	echo "git clone git://git.proxmox.com/git/pve-kernel-meta.git\\ngit checkout $(GITVERSION)" > $(BUILD_DIR)/debian/SOURCE
+$(KERNEL_DEB): $(BUILD_DIR)
 	cd $(BUILD_DIR); dpkg-buildpackage -b -uc -us
 	lintian $(DEBS)
 
@@ -33,4 +36,4 @@ upload: $(DEBS)
 .PHONY: clean distclean
 distclean: clean
 clean:
-	rm -rf *~ $(BUILD_DIR) *.deb *.dsc *.changes *.buildinfo
+	rm -rf *~ pve-kernel-[0-9]*/ pve-kernel-[0-9]*.tar.* *.deb *.dsc *.changes *.buildinfo *.build
