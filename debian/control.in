@@ -10,7 +10,7 @@ Architecture: all
 Section: admin
 Provides: linux-headers-amd64, linux-headers-generic,
 Priority: optional
-Depends: pve-headers-@KERNEL_ABI@,
+Depends: pve-headers-@KERNEL_ABI@, ${misc:Depends}
 Description: Latest Proxmox VE Kernel Headers
  This is a metapackage which will install the kernel headers
  for the latest available proxmox kernel from the @KERNEL_VER@
@@ -21,7 +21,7 @@ Architecture: all
 Section: admin
 Provides: linux-image-amd64, linux-image-generic, wireguard-modules (=1.0.0),
 Priority: optional
-Depends: pve-firmware, pve-kernel-@KERNEL_ABI@,
+Depends: pve-firmware, pve-kernel-@KERNEL_ABI@, ${misc:Depends}
 Description: Latest Proxmox VE Kernel Image
  This is a metapackage which will install the latest available
  proxmox kernel from the @KERNEL_VER@ series.
