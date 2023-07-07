@@ -1,8 +1,15 @@
-pve-kernel-6.2 (8.0.2) UNRELEASED; urgency=medium
+pve-kernel-6.2 (8.0.3) bookworm; urgency=medium
+
+  * ABI bump for 6.2.16-4-pve
+
+
+ -- Proxmox Support Team <support@proxmox.com>  Fri, 07 Jul 2023 09:59:44 +0200
+
+pve-kernel-6.2 (8.0.2) bookworm; urgency=medium
 
   * ABI bump for 6.2.16-3-pve
 
- -- Proxmox Support Team <support@proxmox.com>  Sat, 17 Jun 2023 09:45:18 +0200
+ -- Proxmox Support Team <support@proxmox.com>  Sat, 17 Jun 2023 09:45:41 +0200
 
 pve-kernel-6.2 (8.0.1) bookworm; urgency=medium
 
