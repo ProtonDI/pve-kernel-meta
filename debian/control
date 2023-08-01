@@ -1,4 +1,4 @@
-Source: pve-kernel-6.2
+Source: proxmox-kernel-meta
 Section: admin
 Priority: optional
 Build-Depends: debhelper-compat (= 13),
@@ -6,20 +6,23 @@ Build-Depends: debhelper-compat (= 13),
 Standards-Version: 4.6.2
 Maintainer: Proxmox Support Team <support@proxmox.com>
 
-Package: pve-kernel-6.2
+Package: proxmox-default-headers
 Architecture: all
-Depends: proxmox-kernel-6.2,
-         ${misc:Depends},
-Section: oldlibs
-Description: Proxmox Kernel Image for 6.2 series (transitional package)
- This is a dummy transitional package to transition to proxmox-default-headers.
- It can be safely removed.
-
-Package: pve-headers-6.2
-Architecture: all
+Section: admin
+Provides: pve-headers
+Priority: optional
 Depends: proxmox-headers-6.2,
-         ${misc:Depends},
-Section: oldlibs
-Description: Proxmox Kernel Headers for 6.2 series (transitional package)
- This is a dummy transitional package to transition to proxmox-default-headers.
- It can be safely removed.
+         ${misc:Depends}
+Description: Default Proxmox Kernel Headers
+ This is a metapackage which will install the kernel headers for the default
+ Proxmox kernel series.
+
+Package: proxmox-default-kernel
+Architecture: all
+Section: admin
+Priority: optional
+Depends: proxmox-kernel-6.2,
+         ${misc:Depends}
+Description: Default Proxmox Kernel Image
+ This is a metapackage which will install the kernel image for the default
+ Proxmox kernel series.

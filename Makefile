@@ -1,15 +1,12 @@
 include /usr/share/dpkg/pkg-info.mk
 
-export KERNEL_VER=6.2
-export KERNEL_ABI=6.2.16-5-pve
-
 GITVERSION:=$(shell git rev-parse HEAD)
 
-KERNEL_DEB=pve-kernel-$(KERNEL_VER)_$(DEB_VERSION)_all.deb
-HEADERS_DEB=pve-headers-$(KERNEL_VER)_$(DEB_VERSION)_all.deb
+KERNEL_DEB=proxmox-default-kernel_$(DEB_VERSION)_all.deb
+HEADERS_DEB=proxmox-default-headers_$(DEB_VERSION)_all.deb
 
-BUILD_DIR=pve-kernel-$(KERNEL_VER)_$(DEB_VERSION)
-DSC=pve-kernel-$(KERNEL_VER)_$(DEB_VERSION).dsc
+BUILD_DIR=proxmox-kernel-meta_$(DEB_VERSION)
+DSC=proxmox-kernel-meta_$(DEB_VERSION).dsc
 
 DEBS=$(KERNEL_DEB) $(HEADERS_DEB)
 
@@ -45,4 +42,4 @@ upload: $(DEBS)
 .PHONY: clean distclean
 distclean: clean
 clean:
-	rm -rf *~ pve-kernel-[0-9]*/ pve-kernel-[0-9]*.tar.* *.deb *.dsc *.changes *.buildinfo *.build
+	rm -rf *~ proxmox-kernel-meta*/ proxmox-kernel-meta*.tar.* *.deb *.dsc *.changes *.buildinfo *.build
