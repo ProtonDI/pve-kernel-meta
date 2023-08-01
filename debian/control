@@ -1,0 +1,25 @@
+Source: pve-kernel-6.2
+Section: admin
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               lintian
+Standards-Version: 4.6.2
+Maintainer: Proxmox Support Team <support@proxmox.com>
+
+Package: pve-kernel-6.2
+Architecture: all
+Depends: proxmox-kernel-6.2,
+         ${misc:Depends},
+Section: oldlibs
+Description: Proxmox Kernel Image for 6.2 series (transitional package)
+ This is a dummy transitional package to transition to proxmox-default-headers.
+ It can be safely removed.
+
+Package: pve-headers-6.2
+Architecture: all
+Depends: proxmox-headers-6.2,
+         ${misc:Depends},
+Section: oldlibs
+Description: Proxmox Kernel Headers for 6.2 series (transitional package)
+ This is a dummy transitional package to transition to proxmox-default-headers.
+ It can be safely removed.
